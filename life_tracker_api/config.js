@@ -21,11 +21,6 @@ console.log("Life Tracker Config: ".red);
 console.log("Database URI:".blue, getDatabaseUri());
 console.log("PORT:".blue, PORT);
 console.log("----");
-// console.log("process.env".yellow, Object.keys(proccess.env));
-// console.log("App Config".red);
-// console.log("PORT:".blue, PORT);
-// console.log("Database URI:".blue, getDatabaseUri());
-// console.log("---");
 
 module.exports = {
   PORT,

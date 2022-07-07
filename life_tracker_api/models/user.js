@@ -9,9 +9,7 @@ class User {
       id: user.id,
       first_name: user.first_name,
       last_name: user.last_name,
-      location: user.location,
       email: user.email,
-      date: user.date,
     };
   }
 
@@ -42,7 +40,7 @@ class User {
   static async register(credentials) {
     // user should submit their email, pw, resvp status, and # of guests
     // if any of these fields are missing, throw an error
-    const requiredFields = ["email", "password", "first_name", "last_name", "location", "date"];
+    const requiredFields = ["email", "password", "first_name", "last_name"];
     requiredFields.forEach((field) => {
       if (!credentials.hasOwnProperty(field)) {
         throw new BadRequestError(`Missing ${field} in request body.`);
@@ -70,14 +68,12 @@ class User {
         email, 
         password, 
         first_name,
-        last_name,
-        location,
-        date
+        last_name
       )
-      VALUES ($1, $2, $3, $4, $5, $6)
-      RETURNING id, email, first_name, last_name, location, date;
+      VALUES ($1, $2, $3, $4)
+      RETURNING id, email, first_name, last_name;
     `,
-      [lowercasedEmail, hashedPassword, credentials.first_name, credentials.last_name, credentials.location, credentials.date]
+      [lowercasedEmail, hashedPassword, credentials.first_name, credentials.last_name]
     );
     // return the user
     const user = result.rows[0];
