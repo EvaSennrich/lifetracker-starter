@@ -12,8 +12,37 @@
   justify-content: center;
   position: relative;
 }
+.Landing,
+.Landing .hero {
+  margin-top: 3rem;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
 
-.Landing .tiles {
+.Landing .hero h1,
+.Landing .hero p {
+  color: var(--pure-white);
+  position: relative;
+  z-index: 10;
+  color: aliceblue;
+  background-color: transparent;
+}
+
+.Landing .hero h1 {
+  font-size: 76px;
+  font-weight: 700;
+}
+
+.Landing .hero p {
+  font-size: 24px;
+}
+
+.Landing .hero img {
+  position: absolute;
+}
+
+.Landing .titles {
   display: flex;
   flex-direction: row;
   justify-content: space-evenly;
@@ -22,9 +51,14 @@
   margin: 50px auto 0;
 }
 
-.Landing .tiles .tile {
+.Landing .titles .title {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+}
+
+.Landing .titles .title p {
+  color: aliceblue;
+  margin-top: 3px;
 }

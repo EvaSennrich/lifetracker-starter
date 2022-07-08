@@ -1,8 +1,9 @@
 import React from "react";
+import "./Hero.css";
 
 const Hero = () => {
   return (
-    <div className="landing">
+    <div className="Landing">
       <div className="hero">
         <img src="http://codepath-lifetracker.surge.sh/static/media/smartwatch-screen-digital-device.e2983a85.svg" alt="hero img" />
         <h1>Life Tracker</h1>
