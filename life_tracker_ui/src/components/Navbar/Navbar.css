@@ -1,4 +1,68 @@
-.navbar {
+.Navbar {
+  padding: 10px 100px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 50px;
+}
+/* .Navbar ul {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-end;
+  list-style-type: none;
+  margin-left: auto;
+  flex: 1 1;
+  max-width: 650px;
+  grid-gap: 50px;
+  gap: 50px;
+}
+.Navbar ul li {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+.Navbar ul li a {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+.Navbar .logo h2 {
+  font-weight: 900;
+  font-size: 30px;
+  margin-left: 20px;
+  color: var(--deep-blue);
+} */
+
+a {
+  color: aliceblue;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.links {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-end;
+  list-style-type: none;
+  margin-left: auto;
+  flex: 1 1;
+  max-width: 650px;
+  grid-gap: 50px;
+  gap: 50px;
+}
+
+.signUp-btn {
+  padding: 1rem;
+  border-radius: 6px;
+  text-decoration: none;
+  color: aliceblue;
+  background-color: rgb(9, 209, 142);
+  border: none;
+}
+/* .navbar {
   width: 100%;
   max-width: 100vw;
   height: 10vh;
@@ -6,7 +70,7 @@
   color: aliceblue;
   display: flex;
   justify-content: space-evenly;
-  /* margin-left: 70px; */
+  margin-left: 70px;
   margin: 0px auto;
   z-index: 1;
 }
