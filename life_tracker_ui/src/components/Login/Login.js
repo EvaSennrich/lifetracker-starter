@@ -2,7 +2,6 @@ import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 // import MedicalResearch from "../MedicalResearch/MedicalResearch";
-// import undraw_medical_research from "../../assets/undraw_medical_research_deep_blue.svg"
 import "./Login.css";
 
 export default function Login({ setAppState }) {
@@ -82,7 +81,10 @@ export default function Login({ setAppState }) {
 
         <div className="footer">
           <p>
-            Don't have an account? Sign up <Link to="/register">here</Link>
+            Don't have an account? Sign up{" "}
+            <Link to="/register" style={{ color: "violet" }}>
+              here
+            </Link>
           </p>
         </div>
       </div>
