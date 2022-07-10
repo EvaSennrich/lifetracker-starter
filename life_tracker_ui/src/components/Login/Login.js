@@ -3,7 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import "./Login.css";
 
-export default function Login({ setAppState }) {
+export default function Login({ setAppState, setUserLoggedIn }) {
   const navigate = useNavigate();
   const [isLoading, setIsLoading] = useState(false);
   const [errors, setErrors] = useState({});
@@ -35,6 +35,7 @@ export default function Login({ setAppState }) {
         setAppState(res.data);
         setIsLoading(false);
         navigate("/portal");
+        setUserLoggedIn(true);
       } else {
         setErrors((e) => ({ ...e, form: "Invalid username/password combination" }));
         setIsLoading(false);

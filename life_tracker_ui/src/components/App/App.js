@@ -18,20 +18,18 @@ export default function App() {
   const [appState, setAppState] = useState({});
   const [userLoggedIn, setUserLoggedIn] = useState(false);
 
-  //  {userloggedIn ? <NavbarLoggedIn} /> : <Navbar />}
-
   return (
     <div className="App">
       <BrowserRouter>
-        {/* {userloggedIn ? ( */}
-        <Navbar user={appState.user} userLoggedIn={userLoggedIn.user} setUserLoggedIn={setUserLoggedIn.user} />
-        {/* ) : ( */}
-        <NavbarLoggedIn userLoggedIn={userLoggedIn.user} setUserLoggedIn={setUserLoggedIn.user} />
-        {/* )} */}
+        {userLoggedIn ? (
+          <NavbarLoggedIn userLoggedIn={userLoggedIn.user} setUserLoggedIn={setUserLoggedIn} setAppState={setAppState} />
+        ) : (
+          <Navbar user={appState.user} userLoggedIn={userLoggedIn.user} setUserLoggedIn={setUserLoggedIn.user} setAppState={setAppState} />
+        )}
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/register" element={<Register setAppState={setAppState} />} />
-          <Route path="/login" element={<Login setAppState={setAppState} />} />
+          <Route path="/login" element={<Login setAppState={setAppState} setUserLoggedIn={setUserLoggedIn} />} />
           <Route path="/portal" element={<Portal setAppState={setAppState} appState={appState} user={appState?.user} />} />
           <Route path="/exercise" element={<Exercise setAppState={setAppState} appState={appState} user={appState?.user} />} />
           <Route path="/nutrition" element={<Nutrition setAppState={setAppState} appState={appState} user={appState?.user} />} />

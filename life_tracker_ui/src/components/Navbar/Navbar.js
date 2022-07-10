@@ -5,40 +5,36 @@ import Hero from "../Hero/Hero";
 // import Home from "../Home/Home";
 import NavbarLoggedIn from "../NavbarLoggedIn/NavbarLoggedIn";
 
-export default function Navbar({ userLoggedIn, setUserLoggedIn }) {
+export default function Navbar({ userLoggedIn, setUserLoggedIn, setAppState }) {
   return (
     <>
-      {userLoggedIn ? (
-        <NavbarLoggedIn />
-      ) : (
-        <nav className="Navbar">
-          <Logo />
-          <div className="content">
-            <ul className="links">
-              <li>
-                <Link to="/login">Activity</Link>
-              </li>
-              <li>
-                <Link to="/login">Exercise</Link>
-              </li>
-              <li>
-                <Link to="/login">Nutrition</Link>
-              </li>
-              <li>
-                <Link to="/login">Sleep</Link>
-              </li>
-              <li>
-                <Link to="/login">Login</Link>
-              </li>
-              <li>
-                <Link to="/register">
-                  <button className="signUp-btn">Sign Up</button>
-                </Link>
-              </li>
-            </ul>
-          </div>
-        </nav>
-      )}
+      <nav className="Navbar">
+        <Logo />
+        <div className="content">
+          <ul className="links">
+            <li>
+              <Link to="/login">Activity</Link>
+            </li>
+            <li>
+              <Link to="/login">Exercise</Link>
+            </li>
+            <li>
+              <Link to="/login">Nutrition</Link>
+            </li>
+            <li>
+              <Link to="/login">Sleep</Link>
+            </li>
+            <li>
+              <Link to="/login">Login</Link>
+            </li>
+            <li>
+              <Link to="/register">
+                <button className="signUp-btn">Sign Up</button>
+              </Link>
+            </li>
+          </ul>
+        </div>
+      </nav>
     </>
   );
 }
