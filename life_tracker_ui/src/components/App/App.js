@@ -10,6 +10,7 @@ import NavbarLoggedIn from "../NavbarLoggedIn/NavbarLoggedIn";
 import Exercise from "../Exercise/Exercise";
 import Nutrition from "../Nutrition/Nutrition";
 import Sleep from "../Sleep/Sleep";
+import ExerciseForm from "../ExerciseForm/ExerciseForm";
 
 export default function App() {
   const [appState, setAppState] = useState({});
@@ -33,6 +34,7 @@ export default function App() {
           <Route path="/exercise" element={<Exercise setAppState={setAppState} appState={appState} user={appState?.user} />} />
           <Route path="/nutrition" element={<Nutrition setAppState={setAppState} appState={appState} user={appState?.user} />} />
           <Route path="/sleep" element={<Sleep setAppState={setAppState} appState={appState} user={appState?.user} />} />
+          <Route path="/exercise-form" element={<ExerciseForm setAppState={setAppState} appState={appState} user={appState?.user} />} />
         </Routes>
       </BrowserRouter>
     </div>
