@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import "./Nutrition.css";
 
 const Nutrition = () => {
@@ -11,7 +12,9 @@ const Nutrition = () => {
         <div className="ExerciseOverview">
           <div className="header">
             <h3>Overview</h3>
-            <button className="Button outline small outline aqua">Record Nutrition</button>
+            <Link to="/nutrition-form">
+              <button className="Button outline small outline aqua">Record Nutrition</button>
+            </Link>
           </div>
           <div className="feed">
             <div className="empty">
