@@ -1,3 +1,4 @@
+import * as React from "react";
 // import { Link, useNavigate } from "react-router-dom";
 // import Navbar from "../Navbar/Navbar";
 // import moment from "moment";
@@ -51,10 +52,10 @@ export default function Portal({ user, setAppState }) {
 
     //   <div className="media">{/* <img src={medicalCare} alt="medical care" /> */}</div>
     // </div>
-    <div className="activity-page">
+    <div className="ActivityPage">
       <div className="content">
         <div className="actions">
-          <h2>Activity feed</h2>
+          <h2 className="heading">Activity feed</h2>
           <div className="buttons">
             <button className="Button outline small outline gold">Add Exercise</button>
             <button className="Button outline small outline blue">Log Sleep</button>
