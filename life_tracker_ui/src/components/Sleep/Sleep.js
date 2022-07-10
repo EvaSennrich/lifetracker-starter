@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import "./Sleep.css";
 
 const Sleep = () => {
@@ -11,7 +12,9 @@ const Sleep = () => {
         <div className="ExerciseOverview">
           <div className="header">
             <h3>Overview</h3>
-            <button className="Button outline small outline blue">Add Sleep</button>
+            <Link to="/sleep-form">
+              <button className="Button outline small outline blue">Add Sleep</button>
+            </Link>
           </div>
           <div className="feed">
             <div className="empty">

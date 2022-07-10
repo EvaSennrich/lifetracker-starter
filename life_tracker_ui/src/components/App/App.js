@@ -12,6 +12,7 @@ import Nutrition from "../Nutrition/Nutrition";
 import Sleep from "../Sleep/Sleep";
 import ExerciseForm from "../ExerciseForm/ExerciseForm";
 import NutritionForm from "../NutritionForm/NutritionForm";
+import SleepForm from "../SleepForm/SleepForm";
 
 export default function App() {
   const [appState, setAppState] = useState({});
@@ -37,6 +38,7 @@ export default function App() {
           <Route path="/sleep" element={<Sleep setAppState={setAppState} appState={appState} user={appState?.user} />} />
           <Route path="/exercise-form" element={<ExerciseForm />} />
           <Route path="/nutrition-form" element={<NutritionForm />} />
+          <Route path="/sleep-form" element={<SleepForm />} />
         </Routes>
       </BrowserRouter>
     </div>
