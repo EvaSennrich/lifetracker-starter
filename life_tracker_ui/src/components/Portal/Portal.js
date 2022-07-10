@@ -1,4 +1,5 @@
 import * as React from "react";
+import { Link } from "react-router-dom";
 // import Navbar from "../Navbar/Navbar";
 import "./Portal.css";
 
@@ -9,9 +10,15 @@ export default function Portal() {
         <div className="actions">
           <h2 className="heading">Activity feed</h2>
           <div className="buttons">
-            <button className="Button outline small outline gold">Add Exercise</button>
-            <button className="Button outline small outline blue">Log Sleep</button>
-            <button className="Button outline small outline aqua">Record Nutrition</button>
+            <Link to="/exercise-form">
+              <button className="Button outline small outline gold">Add Exercise</button>
+            </Link>
+            <Link to="/sleep-form">
+              <button className="Button outline small outline blue">Log Sleep</button>
+            </Link>
+            <Link to="/nutrition-form">
+              <button className="Button outline small outline aqua">Record Nutrition</button>
+            </Link>
           </div>
         </div>
         <div className="stats">
