@@ -34,7 +34,7 @@
 }
 
 .heading {
-  margin-left: 6rem;
+  margin-left: 17.7rem;
 }
 
 .ActivityPage .actions .buttons {
@@ -44,7 +44,7 @@
   grid-gap: 20px;
   gap: 20px;
   color: aliceblue;
-  margin-right: 10rem;
+  margin-right: 13.7rem;
 }
 
 .Button {
@@ -152,6 +152,8 @@
   background: rgb(244, 183, 29);
 }
 
+/* =========================== */
+
 .SummaryStat.purple .background {
   /* background: linear-gradient(64.7deg, #441dfc, #4e81eb); */
   background: #441dfc;
@@ -172,6 +174,7 @@
 }
 
 /* ========================= */
+
 .SummaryStat.aqua .background {
   /* background: linear-gradient(64.7deg, #441dfc, #4e81eb); */
   background: rgb(9, 204, 204);
@@ -189,4 +192,91 @@
   font-size: 20px;
   /* background: linear-gradient(64.7deg, #441dfc, #4e81eb); */
   background: rgb(9, 204, 204);
+}
+
+.ActivityPage h4 {
+  margin-left: 17.7rem;
+  font-weight: 700;
+  font-size: 30px;
+  color: aliceblue;
+  margin-top: 4.5rem;
+}
+
+.SummaryStat.small.teal,
+.SummaryStat.small.orange,
+.SummaryStat.small.red {
+  height: 110px;
+}
+
+.SummaryStat.teal .background {
+  /* background: linear-gradient(64.7deg, #0037ff, rgb(0, 181, 181)); */
+  background: teal;
+  mix-blend-mode: normal;
+  justify-content: space-around;
+  padding: 16px 32px;
+  height: 110px;
+}
+
+.SummaryStat.teal h1 {
+  color: aliceblue;
+  font-size: 20px;
+  font-weight: 700;
+  background: teal;
+}
+
+.SummaryStat.teal p {
+  color: aliceblue;
+  font-size: 24px;
+  font-weight: 700;
+  background: teal;
+}
+
+/* ========================== */
+
+.SummaryStat.orange .background {
+  /* background: linear-gradient(64.7deg, #0037ff, rgb(0, 181, 181)); */
+  background: rgb(204, 81, 0);
+  mix-blend-mode: normal;
+  justify-content: space-around;
+  padding: 16px 32px;
+  height: 110px;
+}
+
+.SummaryStat.orange h1 {
+  color: aliceblue;
+  font-size: 20px;
+  font-weight: 700;
+  background: rgb(204, 81, 0);
+}
+
+.SummaryStat.orange p {
+  color: aliceblue;
+  font-size: 24px;
+  font-weight: 700;
+  background: rgb(204, 81, 0);
+}
+
+/* ========================== */
+
+.SummaryStat.red .background {
+  /* background: linear-gradient(64.7deg, #0037ff, rgb(0, 181, 181)); */
+  background: rgb(167, 27, 2);
+  mix-blend-mode: normal;
+  justify-content: space-around;
+  padding: 16px 32px;
+  height: 110px;
+}
+
+.SummaryStat.red h1 {
+  color: aliceblue;
+  font-size: 20px;
+  font-weight: 700;
+  background: rgb(167, 27, 2);
+}
+
+.SummaryStat.red p {
+  color: aliceblue;
+  font-size: 24px;
+  font-weight: 700;
+  background: rgb(167, 27, 2);
 }

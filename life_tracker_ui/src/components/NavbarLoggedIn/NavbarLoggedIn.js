@@ -1,11 +1,10 @@
 import * as React from "react";
 import { Link } from "react-router-dom";
-import "./Navbar.css";
+import "./NavbarLoggedIn.css";
 import Hero from "../Hero/Hero";
 // import Home from "../Home/Home";
-import NavbarLoggedIn from "../NavbarLoggedIn/NavbarLoggedIn";
 
-export default function Navbar({ userLoggedIn, setUserLoggedIn }) {
+export default function NavbarLoggedIn({ userLoggedIn, setUserLoggedIn }) {
   return (
     <>
       {userLoggedIn ? (
@@ -16,23 +15,20 @@ export default function Navbar({ userLoggedIn, setUserLoggedIn }) {
           <div className="content">
             <ul className="links">
               <li>
-                <Link to="/login">Activity</Link>
+                <Link to="/portal">Activity</Link>
               </li>
               <li>
-                <Link to="/login">Exercise</Link>
+                <Link to="/exercise">Exercise</Link>
               </li>
               <li>
-                <Link to="/login">Nutrition</Link>
+                <Link to="/nutrition">Nutrition</Link>
               </li>
               <li>
-                <Link to="/login">Sleep</Link>
+                <Link to="/sleep">Sleep</Link>
               </li>
               <li>
-                <Link to="/login">Login</Link>
-              </li>
-              <li>
-                <Link to="/register">
-                  <button className="signUp-btn">Sign Up</button>
+                <Link to="/">
+                  <button className="signUp-btn">Log Out</button>
                 </Link>
               </li>
             </ul>
