@@ -92,7 +92,13 @@ export default function Signup({ setAppState }) {
 
   return (
     <div className="Register">
-      <div className="media">{/* <MedicalResearch width={555} /> */}</div>
+      <div className="media">
+        <img
+          src="https://betterme.world/articles/wp-content/uploads/2020/12/Frame-4902-convert.io_-1024x576.jpg"
+          alt="runners img"
+          style={{ opacity: "0.5", borderRadius: "50px", marginTop: "5rem" }}
+        />
+      </div>
       <div className="card">
         <h2>Register</h2>
 
@@ -137,7 +143,7 @@ export default function Signup({ setAppState }) {
 
           <div className="input-field">
             <label htmlFor="email">Email</label>
-            <input type="email" name="email" placeholder="jane@doe.io" value={form.email} onChange={handleOnInputChange} />
+            <input type="email" name="email" placeholder="mike@scholl.io" value={form.email} onChange={handleOnInputChange} />
             {errors.email && <span className="error">{errors.email}</span>}
           </div>
 

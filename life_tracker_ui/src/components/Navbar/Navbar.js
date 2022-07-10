@@ -2,6 +2,7 @@ import * as React from "react";
 import { Link, useLocation } from "react-router-dom";
 import "./Navbar.css";
 import Hero from "../Hero/Hero";
+// import Home from "../Home/Home";
 
 export default function Navbar() {
   const location = useLocation();
@@ -37,7 +38,6 @@ export default function Navbar() {
           ) : null}
         </div>
       </nav>
-      <Hero />
     </>
   );
 }

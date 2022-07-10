@@ -51,8 +51,11 @@ export default function Login({ setAppState }) {
   return (
     <div className="Login">
       <div className="media">
-        {/* <img src={undraw_medical_research} alt="medical research" /> */}
-        {/* <MedicalResearch width={555} /> */}
+        <img
+          src="https://betterme.world/articles/wp-content/uploads/2020/12/Frame-4902-convert.io_-1024x576.jpg"
+          alt="runners img"
+          style={{ opacity: "0.5", borderRadius: "50px", marginTop: "1.5rem" }}
+        />
       </div>
 
       <div className="card">

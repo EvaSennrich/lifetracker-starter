@@ -19,6 +19,7 @@
   flex: 1;
   color: aliceblue;
   background-color: #2c4147;
+  margin-top: 1.7rem;
 }
 .Register .card .error {
   background: #fe5421;
@@ -66,6 +67,7 @@
   border: solid 1px #ababb7;
   width: 100%;
   border-radius: 4px;
+  color: aliceblue;
 }
 .Register .card .form .btn {
   width: 100%;
@@ -82,7 +84,7 @@
 }
 .Register .card .footer {
   border-top: solid 1px #ababb7;
-  margin-top: auto;
+  /* margin-top: 0.5rem; */
   display: flex;
   align-items: center;
   justify-content: center;
