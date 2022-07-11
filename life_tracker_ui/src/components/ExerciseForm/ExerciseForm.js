@@ -22,11 +22,11 @@ const ExerciseForm = () => {
             <div className="split-input-field">
               <div className="InputField">
                 <label for="duration">Duration (min)</label>
-                <input type="number" name="duration" min="1" max="100000000" value="1"></input>
+                <input type="number" name="duration" min="1" max="100000000" defaultValue="1"></input>
               </div>
               <div className="InputField">
                 <label for="intensity">Intensity (1-10)</label>
-                <input type="number" name="intensity" min="0" max="10" value="1"></input>
+                <input type="number" name="intensity" min="1" max="10" defaultValue="1"></input>
               </div>
             </div>
             <button class="Button primary large  gold">Save</button>

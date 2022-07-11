@@ -2,8 +2,6 @@ import * as React from "react";
 import { Link } from "react-router-dom";
 import "./Navbar.css";
 import Hero from "../Hero/Hero";
-// import Home from "../Home/Home";
-import NavbarLoggedIn from "../NavbarLoggedIn/NavbarLoggedIn";
 
 export default function Navbar({ userLoggedIn, setUserLoggedIn, setAppState }) {
   return (

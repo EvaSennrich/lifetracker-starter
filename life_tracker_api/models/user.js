@@ -4,6 +4,11 @@ const { BCRYPT_WORK_FACTOR } = require("../config");
 const { BadRequestError, UnauthorizedError } = require("../utils/errors");
 
 class User {
+  /**
+   *
+   * @param {*} user to access values from users table
+   * @returns an object with users values that we want to be public
+   */
   static async makePublicUser(user) {
     return {
       id: user.id,
@@ -12,6 +17,12 @@ class User {
       email: user.email,
     };
   }
+
+  /**
+   * to access the user's email and password
+   * @param {*} credentials
+   * @returns void
+   */
 
   static async login(credentials) {
     // user should submit their email and password
@@ -36,6 +47,12 @@ class User {
     // if any of this goes wrong, throw an error
     throw new UnauthorizedError("Invalid email/password combo");
   }
+
+  /**
+   * to access the user's email and password
+   * @param {*} credentials
+   * @returns the public user credentials object
+   */
 
   static async register(credentials) {
     // user should submit their email, pw, resvp status, and # of guests

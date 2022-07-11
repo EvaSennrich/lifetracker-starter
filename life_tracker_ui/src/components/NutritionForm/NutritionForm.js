@@ -22,11 +22,11 @@ const NutritionForm = () => {
             <div className="split-input-field">
               <div className="InputField">
                 <label for="duration">Quantity</label>
-                <input type="number" name="duration" min="1" max="100000000" value="1"></input>
+                <input type="number" name="duration" min="1" max="100000000" defaultValue="1"></input>
               </div>
               <div className="InputField">
                 <label for="intensity">Calories</label>
-                <input type="number" name="intensity" min="0" max="10" value="1"></input>
+                <input type="number" name="intensity" min="0" max="10" defaultValue="1"></input>
               </div>
             </div>
             <div className="InputField">

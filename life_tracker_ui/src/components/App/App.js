@@ -31,9 +31,9 @@ export default function App() {
           <Route path="/register" element={<Register setAppState={setAppState} />} />
           <Route path="/login" element={<Login setAppState={setAppState} setUserLoggedIn={setUserLoggedIn} />} />
           <Route path="/portal" element={<Portal setAppState={setAppState} appState={appState} user={appState?.user} />} />
-          <Route path="/exercise" element={<Exercise setAppState={setAppState} appState={appState} user={appState?.user} />} />
-          <Route path="/nutrition" element={<Nutrition setAppState={setAppState} appState={appState} user={appState?.user} />} />
-          <Route path="/sleep" element={<Sleep setAppState={setAppState} appState={appState} user={appState?.user} />} />
+          <Route path="/exercise" element={<Exercise />} />
+          <Route path="/nutrition" element={<Nutrition />} />
+          <Route path="/sleep" element={<Sleep />} />
           <Route path="/exercise-form" element={<ExerciseForm />} />
           <Route path="/nutrition-form" element={<NutritionForm />} />
           <Route path="/sleep-form" element={<SleepForm />} />
