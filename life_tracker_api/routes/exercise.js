@@ -1,21 +1,31 @@
 const express = require("express");
 const Exercise = require("../models/exercise");
 const router = express.Router();
+const security = require("../middleware/security");
+// const { createUserJwt } = require("../utils/tokens");
 // const { NotFoundError, BadRequestError } = require("../utils/errors");
 
-router.post("/create", async (req, res, next) => {
+/**
+ * endpoint for creating/ adding new exercise
+ */
+router.post("/", security.requireAuthenticatedUser, async (req, res, next) => {
   try {
-    const userExercise = await Exercise.addExercise(req.body);
-    return res.status(200).json({ userExercise });
+    const { user } = res.locals;
+    const exercise = await Exercise.addExercise({ user, data: req.body });
+    console.log("REQ.BODY", exercise);
+    return res.status(201).json(exercise);
   } catch (err) {
     next(err);
   }
 });
 
+/**
+ * list all exercise
+ */
 router.get("/", async (req, res, next) => {
   try {
-    const userExercise = await Exercise.listAllExercise(req.body);
-    return res.status(201).json({ exercises: userExercise });
+    const exercises = await Exercise.listAllExercise();
+    return res.status(201).json(exercises);
   } catch (err) {
     next(err);
   }

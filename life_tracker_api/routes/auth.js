@@ -33,13 +33,10 @@ router.post("/register", async (req, res, next) => {
 router.get("/me", security.requireAuthenticatedUser, async (req, res, next) => {
   try {
     const { email } = res.locals.user;
-    console.log("---->>>>", res.locals.user);
     const user = await User.fetchUserByEmail(email);
     const publicUser = User.makePublicUser(user);
-    console.log("--->PUBLIC USER", publicUser);
     res.status(200).send({ user: publicUser });
   } catch (err) {
-    console.log("err", err);
     next(err);
   }
 });

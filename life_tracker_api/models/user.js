@@ -79,7 +79,7 @@ class User {
     // take the users email, and lowercase it
     const lowercasedEmail = credentials.email.toLowerCase();
 
-    // create a new user in teh db with all their info
+    // create a new user in the db with all their info
     const result = await db.query(
       `INSERT INTO users (
         email, 
