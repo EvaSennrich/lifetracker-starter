@@ -9,7 +9,7 @@ class User {
    * @param {*} user to access values from users table
    * @returns an object with users values that we want to be public
    */
-  static async makePublicUser(user) {
+  static makePublicUser(user) {
     return {
       id: user.id,
       first_name: user.first_name,

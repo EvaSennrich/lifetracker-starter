@@ -4,6 +4,9 @@ CREATE TABLE users (
   first_name    TEXT NOT NULL,
   last_name     TEXT NOT NULL,
   email         TEXT NOT NULL UNIQUE CHECK (POSITION('@' IN email) > 1)
+  user_id       INTEGER REFERENCES users(id) ON DELETE CASCADE,
+  created_at    TIMESTAMP NOT NULL DEFAULT NOW()   
+  
 );
 
 CREATE TABLE exercise (

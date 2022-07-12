@@ -29,7 +29,7 @@ const extractUserFromJwt = (req, res, next) => {
 };
 
 // create a function to verify a authed user exists
-const requireAuhenticatedUser = (req, res, next) => {
+const requireAuthenticatedUser = (req, res, next) => {
   try {
     const { user } = res.locals;
     if (!user?.email) {
@@ -43,6 +43,6 @@ const requireAuhenticatedUser = (req, res, next) => {
 
 module.exports = {
   extractUserFromJwt,
-  requireAuhenticatedUser,
+  requireAuthenticatedUser,
   jwtFrom,
 };
