@@ -1,7 +1,33 @@
 import React from "react";
+import { useState, axios, navigate } from "react";
 import "./ExerciseForm.css";
 
-const ExerciseForm = () => {
+const ExerciseForm = ({ setAppState }) => {
+  const [isLoading, setIsLoading] = useState(false);
+  // const [errors, setErrors] = useState({});
+
+  const handleOnSubmitExercise = async (e) => {
+    e.preventDefault();
+    setIsLoading(true);
+
+    try {
+      const res = await axios.post(`http://localhost:3001/exercise`);
+      if (res?.data) {
+        setAppState(res.data);
+        setIsLoading(false);
+        navigate("/portal");
+      } else {
+        // setErrors((e) => ({ ...e, form: "Invalid username/password combination" }));
+        setIsLoading(false);
+      }
+    } catch (err) {
+      console.log(err);
+      // const message = err?.response?.data?.error?.message;
+      // setErrors((e) => ({ ...e, form: message ? String(message) : String(err) }));
+      setIsLoading(false);
+    }
+  };
+
   return (
     <div className="ExercisePage">
       <div className="Banner">
@@ -29,12 +55,46 @@ const ExerciseForm = () => {
                 <input type="number" name="intensity" min="1" max="10" defaultValue="1"></input>
               </div>
             </div>
-            <button class="Button primary large  gold">Save</button>
+            <button className="Button primary large gold" disabled={isLoading} onClick={handleOnSubmitExercise}>
+              {isLoading ? "Loading..." : "Save"}
+            </button>
           </div>
         </div>
       </div>
     </div>
   );
 };
+
+// FOR BUTTON: ================================
+
+// const [isLoading, setIsLoading] = useState(false);
+
+// const handleOnSubmit = async (e) => {
+//   e.preventDefault();
+//   setIsLoading(true);
+//   setErrors((e) => ({ ...e, form: null }));
+
+//   try {
+//     const res = await axios.post(`http://localhost:3001/auth/login`, form);
+//     if (res?.data) {
+//       setAppState(res.data);
+//       setIsLoading(false);
+//       navigate("/portal");
+//       setUserLoggedIn(true);
+//     } else {
+//       setErrors((e) => ({ ...e, form: "Invalid username/password combination" }));
+//       setIsLoading(false);
+//     }
+//   } catch (err) {
+//     console.log(err);
+//     const message = err?.response?.data?.error?.message;
+//     setErrors((e) => ({ ...e, form: message ? String(message) : String(err) }));
+//     setIsLoading(false);
+//   }
+// };
+
+// <button className="btn" disabled={isLoading} onClick={handleOnSubmit}>
+//   {isLoading ? "Loading..." : "Login"}
+// </button>;
 
 export default ExerciseForm;

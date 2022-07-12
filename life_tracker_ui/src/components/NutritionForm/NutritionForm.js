@@ -33,7 +33,7 @@ const NutritionForm = () => {
               <label for="imageUrl">Image URL</label>
               <input type="text" name="imageUrl" placeholder="http://www.food-image.com/1" value=""></input>
             </div>
-            <button class="Button primary large  aqua">Save</button>
+            <button className="Button primary large  aqua">Save</button>
           </div>
         </div>
       </div>

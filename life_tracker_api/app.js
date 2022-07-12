@@ -4,12 +4,19 @@ const app = express();
 const cors = require("cors");
 const { BadRequestError, NotFoundError } = require("./utils/errors");
 const authRoutes = require("./routes/auth");
-// const User = require("./models/user");
+const exerciseRoutes = require("./routes/exercise");
+const security = require("./middleware/security");
 
 app.use(morgan("tiny"));
 app.use(express.json());
 app.use(cors());
+/**
+ * this middlewate checks for every request check if a token exists in the authorization header,
+    if it does,attach the decoded user to the res.locals
+ */
+app.use(security.extractUserFromJwt);
 app.use("/auth", authRoutes);
+app.use("/exercise", exerciseRoutes);
 
 app.use((req, res, next) => {
   return next(new NotFoundError());

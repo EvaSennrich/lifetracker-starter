@@ -19,7 +19,7 @@ const SleepForm = () => {
               <label for="endTime">End Time</label>
               <input type="datetime-local" name="endTime" value=""></input>
             </div>
-            <button class="Button primary large  blue">Save</button>
+            <button className="Button primary large  blue">Save</button>
           </div>
         </div>
       </div>

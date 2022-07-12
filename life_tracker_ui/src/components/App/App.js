@@ -34,7 +34,7 @@ export default function App() {
           <Route path="/exercise" element={<Exercise />} />
           <Route path="/nutrition" element={<Nutrition />} />
           <Route path="/sleep" element={<Sleep />} />
-          <Route path="/exercise-form" element={<ExerciseForm />} />
+          <Route path="/exercise-form" element={<ExerciseForm setAppState={setAppState} />} />
           <Route path="/nutrition-form" element={<NutritionForm />} />
           <Route path="/sleep-form" element={<SleepForm />} />
         </Routes>

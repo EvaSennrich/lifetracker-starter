@@ -19,8 +19,8 @@ class User {
   }
 
   /**
-   * to access the user's email and password
-   * @param {*} credentials
+   *
+   * @param {*} credentials to access the user's email and password
    * @returns void
    */
 
@@ -49,8 +49,8 @@ class User {
   }
 
   /**
-   * to access the user's email and password
-   * @param {*} credentials
+   *
+   * @param {*} credentials to access the user's email and password
    * @returns the public user credentials object
    */
 
