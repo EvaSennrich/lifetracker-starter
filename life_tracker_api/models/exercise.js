@@ -9,24 +9,6 @@ class Exercise {
    * @returns an object with the new user inputted values
    */
   static async addExercise({ user, data }) {
-    // const query = `INSERT INTO  exercise (
-    //   name,
-    //   category,
-    //   duration,
-    //   intensity,
-    //   user_id
-    //   )
-    //   VALUES ($1, $2, $3, $4, (SELECT id FROM users WHERE email = $5))
-    //   RETURNING id,
-    //             name,
-    //             duration,
-    //             intensity,
-    //             user_id,
-    //             created_at`;
-
-    // const result = await db.query(query, [data.name, data.category, data.duration, data.intensity, user.email]);
-    // return result.rows[0];
-
     const requiredFields = ["name", "category", "duration", "intensity"];
     requiredFields.forEach((field) => {
       if (!data.hasOwnProperty(field)) {
@@ -52,6 +34,24 @@ class Exercise {
       [data.name, data.category, data.duration, data.intensity, user.email]
     );
     return results.rows[0];
+
+    // const query = `INSERT INTO  exercise (
+    //   name,
+    //   category,
+    //   duration,
+    //   intensity,
+    //   user_id
+    //   )
+    //   VALUES ($1, $2, $3, $4, (SELECT id FROM users WHERE email = $5))
+    //   RETURNING id,
+    //             name,
+    //             duration,
+    //             intensity,
+    //             user_id,
+    //             created_at`;
+
+    // const result = await db.query(query, [data.name, data.category, data.duration, data.intensity, user.email]);
+    // return result.rows[0];
   }
 
   /**
