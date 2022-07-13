@@ -5,6 +5,7 @@ const cors = require("cors");
 const { BadRequestError, NotFoundError } = require("./utils/errors");
 const authRoutes = require("./routes/auth");
 const exerciseRoutes = require("./routes/exercise");
+const nutritionRoutes = require("./routes/nutrition");
 const security = require("./middleware/security");
 
 app.use(morgan("tiny"));
@@ -17,6 +18,7 @@ app.use(cors());
 app.use(security.extractUserFromJwt);
 app.use("/auth", authRoutes);
 app.use("/exercise", exerciseRoutes);
+app.use("/nutrition", exerciseRoutes);
 
 app.use((req, res, next) => {
   return next(new NotFoundError());

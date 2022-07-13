@@ -11,8 +11,7 @@ const security = require("../middleware/security");
 router.post("/create", security.requireAuthenticatedUser, async (req, res, next) => {
   try {
     const { user } = res.locals;
-    const exercise = await Exercise.addExercise({ user, data: req.body });
-    console.log("REQ.BODY", exercise);
+    const exercise = await Exercise.addNutrition({ user, data: req.body });
     return res.status(201).json(exercise);
   } catch (err) {
     next(err);
@@ -25,10 +24,9 @@ router.post("/create", security.requireAuthenticatedUser, async (req, res, next)
 router.get("/", async (req, res, next) => {
   try {
     const { user } = res.locals;
-    const exercises = await Exercise.listAllExercise(user);
+    const exercises = await Exercise.listAllNutrition(user);
     return res.status(201).json(exercises);
   } catch (err) {
-    console.log("BIG FAT ERRORRR", err);
     next(err);
   }
 });
