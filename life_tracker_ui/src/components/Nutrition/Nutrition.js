@@ -1,5 +1,8 @@
 import React from "react";
+// import { createContext } from "react";
+import { useState } from "react";
 import { Link } from "react-router-dom";
+import NutritionCard from "../../NutritionCard/NutritionCard";
 import "./Nutrition.css";
 
 const Nutrition = () => {
@@ -18,6 +21,7 @@ const Nutrition = () => {
           </div>
           <div className="feed">
             <div className="empty">
+              <NutritionCard />
               <h2>Nothing Here Yet.</h2>
             </div>
           </div>
