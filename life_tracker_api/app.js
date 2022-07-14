@@ -18,7 +18,7 @@ app.use(cors());
 app.use(security.extractUserFromJwt);
 app.use("/auth", authRoutes);
 app.use("/exercise", exerciseRoutes);
-app.use("/nutrition", exerciseRoutes);
+app.use("/nutrition", nutritionRoutes);
 
 app.use((req, res, next) => {
   return next(new NotFoundError());

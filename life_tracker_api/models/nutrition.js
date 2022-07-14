@@ -1,15 +1,15 @@
 const db = require("../db");
 const { BadRequestError, UnauthorizedError, NotFoundError } = require("../utils/errors");
 
-class Exercise {
+class Nutrition {
   /**
-   * create/add exercise method
+   * create/add nutrition method
    * @param {*} user to access the user personal information as email
-   * @param {*} data to access the users input values from the nutrition table: name, category, duration and intensity
+   * @param {*} data to access the users input values from the nutrition table
    * @returns an object with the new user inputted values
    */
   static async addNutrition({ user, data }) {
-    const requiredFields = ["name", "category", "duration", "intensity"];
+    const requiredFields = ["name", "category", "quantity", "calories", "image_url"];
     requiredFields.forEach((field) => {
       if (!data.hasOwnProperty(field)) {
         throw new BadRequestError(`Missing ${field} in request body.`);
@@ -21,17 +21,19 @@ class Exercise {
         category,
         quantity,
         calories,
+        image_url,
         user_id
       )
-      VALUES ($1, $2, $3, $4, (SELECT id FROM users WHERE users.email = $5))
+      VALUES ($1, $2, $3, $4, $5, (SELECT id FROM users WHERE users.email = $6))
       RETURNING id,
                 name,
                 category,
                 quantity,
                 calories,
+                image_url,
                 created_at
     `,
-      [data.name, data.category, data.quantity, data.calories, user.email]
+      [data.name, data.category, data.quantity, data.calories, data.image_url, user.email]
     );
     return results.rows[0];
   }
@@ -44,7 +46,7 @@ class Exercise {
 
   static async listAllNutrition(user) {
     const query = `
-    SELECT name, category, quantity, calories
+    SELECT name, category, quantity, calories, image_url
     FROM nutrition
     WHERE user_id = (SELECT id FROM users WHERE users.email = $1) 
     ORDER BY created_at ASC
@@ -53,21 +55,7 @@ class Exercise {
     const result = await db.query(query, [user.email]);
 
     return result.rows;
-
-    //   const results = await db.query(
-    //     `
-    //     SELECT name,
-    //           category,
-    //           duration,
-    //           intensity,
-    //           user_id
-    //     FROM exercise
-    //     ORDER BY date_created ASC
-    //     JOIN users ON users.id = exercise.user_id
-    //     `
-    //   );
-    //   return results.rows;
   }
 }
 
-module.exports = Exercise;
+module.exports = Nutrition;

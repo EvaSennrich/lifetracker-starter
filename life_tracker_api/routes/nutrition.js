@@ -1,31 +1,31 @@
 const express = require("express");
-const Exercise = require("../models/exercise");
+const Nutrition = require("../models/nutrition");
 const router = express.Router();
 const security = require("../middleware/security");
 // const { createUserJwt } = require("../utils/tokens");
 // const { NotFoundError, BadRequestError } = require("../utils/errors");
 
 /**
- * endpoint for creating/ adding new exercise
+ * endpoint for creating/ adding new nutrition info
  */
 router.post("/create", security.requireAuthenticatedUser, async (req, res, next) => {
   try {
     const { user } = res.locals;
-    const exercise = await Exercise.addNutrition({ user, data: req.body });
-    return res.status(201).json(exercise);
+    const nutrition = await Nutrition.addNutrition({ user, data: req.body });
+    return res.status(201).json(nutrition);
   } catch (err) {
     next(err);
   }
 });
 
 /**
- * list all exercise
+ * list all nutrition info
  */
 router.get("/", async (req, res, next) => {
   try {
     const { user } = res.locals;
-    const exercises = await Exercise.listAllNutrition(user);
-    return res.status(201).json(exercises);
+    const nutritions = await Nutrition.listAllNutrition(user);
+    return res.status(201).json(nutritions);
   } catch (err) {
     next(err);
   }
