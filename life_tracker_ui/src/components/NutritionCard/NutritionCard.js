@@ -1,7 +1,7 @@
 import React from "react";
 import "./NutritionCard.css";
 
-const NutritionCard = ({ image_url, name, calories, category, quantity }) => {
+const NutritionCard = ({ name, category, quantity, calories, image_url }) => {
   return (
     <div className="NutritionCard">
       <div className="card-header">

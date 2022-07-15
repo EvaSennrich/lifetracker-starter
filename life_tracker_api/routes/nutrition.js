@@ -2,13 +2,11 @@ const express = require("express");
 const Nutrition = require("../models/nutrition");
 const router = express.Router();
 const security = require("../middleware/security");
-// const { createUserJwt } = require("../utils/tokens");
-// const { NotFoundError, BadRequestError } = require("../utils/errors");
 
 /**
  * endpoint for creating/ adding new nutrition info
  */
-router.post("/create", security.requireAuthenticatedUser, async (req, res, next) => {
+router.post("/", security.requireAuthenticatedUser, async (req, res, next) => {
   try {
     const { user } = res.locals;
     const nutrition = await Nutrition.addNutrition({ user, data: req.body });
@@ -19,7 +17,7 @@ router.post("/create", security.requireAuthenticatedUser, async (req, res, next)
 });
 
 /**
- * list all nutrition info
+ * list all nutrition info  list
  */
 router.get("/", async (req, res, next) => {
   try {

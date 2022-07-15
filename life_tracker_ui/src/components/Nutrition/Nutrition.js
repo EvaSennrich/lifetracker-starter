@@ -2,10 +2,13 @@ import React from "react";
 // import { createContext } from "react";
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import NutritionCard from "../../NutritionCard/NutritionCard";
+
 import "./Nutrition.css";
+import NutritionFeed from "../NutritionFeed/NutritionFeed";
+import NutritionForm from "../NutritionForm/NutritionForm";
 
 const Nutrition = () => {
+  const [nutritions, setNutritions] = useState([]);
   return (
     <div className="ExercisePage">
       <div className="Banner">
@@ -18,10 +21,11 @@ const Nutrition = () => {
             <Link to="/nutrition-form">
               <button className="Button outline small outline aqua">Record Nutrition</button>
             </Link>
+            <NutritionForm nutritions={nutritions} setNutritions={setNutritions} />
           </div>
           <div className="feed">
             <div className="empty">
-              <NutritionCard />
+              <NutritionFeed nutritions={nutritions} setNutritions={setNutritions} />
               <h2>Nothing Here Yet.</h2>
             </div>
           </div>

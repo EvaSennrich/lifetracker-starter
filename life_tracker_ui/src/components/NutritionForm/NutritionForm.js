@@ -1,15 +1,17 @@
 import React from "react";
 // import axios from "axios";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import apiClient from "../services/apiClient";
 import "./NutritionForm.css";
 
 const NutritionForm = () => {
   // const [nutritions, setNutritions] = useState("");
   // const [initialized, setInitialized] = useState("");
+  const navigate = useNavigate();
   const [isLoading, setIsLoading] = useState(false);
   const [errors, setErrors] = useState({});
-  const [nutrition, setNutrition] = useState([]);
+  const [nutritions, setNutritions] = useState([]);
   const [nutritionForm, setNutritionForm] = useState({
     name: "",
     category: "",
@@ -19,37 +21,10 @@ const NutritionForm = () => {
   });
 
   const handleOnInputChangeNutrition = (event) => {
-    // console.log("CLIcKED");
-    // if (!nutritionForm) {
     setNutritionForm((field) => ({ ...field, [event.target.name]: event.target.value }));
-    // } else {
+
     setErrors((e) => ({ ...e, nutritionForm: "Please fill out missing fields." }));
-    // }
   };
-
-  // const handleOnSubmitNutrition = async (e) => {
-  //   e.preventDefault();
-  //   setIsLoading(true);
-  //   setErrors((e) => ({ ...e, nutritionForm: null }));
-
-  //   try {
-  //     const res = await axios.post(`http://localhost:3001/exercise`, nutritionForm);
-  //     if (res?.data) {
-  //       // setAppState(res.data);
-  //       // setIsLoading(false);
-  //       // navigate("/portal");
-  //       // setUserLoggedIn(true);
-  //     } else {
-  //       setErrors((e) => ({ ...e, form: "Invalid username/password combination" }));
-  //       setIsLoading(false);
-  //     }
-  //   } catch (err) {
-  //     console.log(err);
-  //     const message = err?.response?.data?.error?.message;
-  //     setErrors((e) => ({ ...e, form: message ? String(message) : String(err) }));
-  //     setIsLoading(false);
-  //   }
-  // };
 
   const handleOnSubmitNutrition = async () => {
     if (nutritionForm.name === "" || nutritionForm.category === "" || nutritionForm.quantity === "" || nutritionForm.calories === "") {
@@ -67,10 +42,10 @@ const NutritionForm = () => {
         image_url: nutritionForm.image_url,
       },
     });
-
+    navigate("/nutrition");
     // log data to see object
     console.log("DATA ----->", data);
-    setNutrition([...nutrition, data.nutrition]);
+    // setNutritions([...nutritions, data.nutritions]);
     setIsLoading(false);
   };
 

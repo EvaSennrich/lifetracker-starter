@@ -66,10 +66,10 @@ class ApiClient {
   }
 
   async addNutrition(data) {
-    return this.request({ endpoint: "nutrition/create", method: "POST", data: data });
+    return this.request({ endpoint: "nutrition/", method: "POST", data: data });
   }
   async listNutrition(user) {
-    return this.request({ endpoint: "nutrition", method: "GET" });
+    return this.request({ endpoint: "nutrition/", method: "GET" });
   }
 }
 

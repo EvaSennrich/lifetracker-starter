@@ -8,7 +8,7 @@ const security = require("../middleware/security");
 /**
  * endpoint for creating/ adding new exercise
  */
-router.post("/create", security.requireAuthenticatedUser, async (req, res, next) => {
+router.post("/", security.requireAuthenticatedUser, async (req, res, next) => {
   try {
     const { user } = res.locals;
     const exercise = await Exercise.addExercise({ user, data: req.body });
