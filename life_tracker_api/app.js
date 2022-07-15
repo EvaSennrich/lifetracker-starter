@@ -20,12 +20,12 @@ app.use("/auth", authRoutes);
 app.use("/exercise", exerciseRoutes);
 app.use("/nutrition", nutritionRoutes);
 
-app.use((req, res, next) => {
-  return next(new NotFoundError());
+app.get("/", (req, res) => {
+  res.send("PING PONG");
 });
 
-app.get("/", (req, res, next) => {
-  res.send("PING PONG");
+app.use((req, res, next) => {
+  return next(new NotFoundError());
 });
 
 app.use((err, req, res, next) => {
