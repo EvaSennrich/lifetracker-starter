@@ -73,4 +73,4 @@ class ApiClient {
   }
 }
 
-export default new ApiClient(process.env.REACT_APP_REMOTE_HOST_URL || "https://lifetracker-eva.surge.sh/");
+export default new ApiClient(process.env.REACT_APP_REMOTE_HOST_URL || "https://ftl-eva1.herokuapp.com/");
