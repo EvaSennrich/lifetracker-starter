@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import apiClient from "../services/apiClient";
 import axios from "axios";
 import "./Login.css";
 
@@ -30,9 +31,12 @@ export default function Login({ setAppState, setUserLoggedIn }) {
     setErrors((e) => ({ ...e, form: null }));
 
     try {
-      const res = await axios.post(`http://localhost:3001/auth/login`, form);
-      if (res?.data) {
-        setAppState(res.data);
+      const { data } = await apiClient.login({
+        email: form.email,
+        password: form.password,
+      });
+      if (data) {
+        setAppState(data);
         setIsLoading(false);
         navigate("/portal");
         setUserLoggedIn(true);
