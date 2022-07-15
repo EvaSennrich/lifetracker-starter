@@ -19,7 +19,7 @@ const NutritionCard = ({ image_url, name, calories, category, quantity }) => {
         </div>
       </div>
       <div className="card-meta">
-        {/* here goes the timestampt the food was entered */}
+        {/* here goes the timestampt the food was entered ---> need to create a function?? or pased a date_created colum on nutrition table database???*/}
         <small>{}</small>
         <small className="category">{category}</small>
       </div>
