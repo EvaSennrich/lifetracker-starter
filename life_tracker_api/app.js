@@ -24,6 +24,10 @@ app.use((req, res, next) => {
   return next(new NotFoundError());
 });
 
+app.get("/", (req, res, next) => {
+  res.send("PING PONG");
+});
+
 app.use((err, req, res, next) => {
   const status = err.status || 500;
   const message = err.message;
