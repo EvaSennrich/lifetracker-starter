@@ -22,7 +22,7 @@
 
 .Landing .hero h1,
 .Landing .hero p {
-  color: var(--pure-white);
+  color: aliceblue;
   position: relative;
   z-index: 10;
   color: aliceblue;
@@ -36,6 +36,7 @@
 
 .Landing .hero p {
   font-size: 24px;
+  background: none;
 }
 
 .Landing .hero img {

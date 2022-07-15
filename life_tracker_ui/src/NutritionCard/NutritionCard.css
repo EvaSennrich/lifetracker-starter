@@ -61,8 +61,10 @@
 .card-stats,
 .CardStat,
 .card-meta,
-.title,
-.category,
-p {
+.category {
+  background: rgb(9, 224, 224);
+}
+
+.NutritionCard .title {
   background: rgb(9, 224, 224);
 }
