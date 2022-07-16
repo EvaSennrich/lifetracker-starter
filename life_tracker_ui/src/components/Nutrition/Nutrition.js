@@ -21,7 +21,7 @@ const Nutrition = () => {
             <Link to="/nutrition-form">
               <button className="Button outline small outline aqua">Record Nutrition</button>
             </Link>
-            <NutritionForm nutritions={nutritions} setNutritions={setNutritions} />
+            {/* <NutritionForm nutritions={nutritions} setNutritions={setNutritions} /> */}
           </div>
           <div className="feed">
             <div className="empty">

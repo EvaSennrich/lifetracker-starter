@@ -88,3 +88,7 @@
   width: 100%;
   transform: translateY(42px);
 }
+
+button {
+  cursor: pointer;
+}

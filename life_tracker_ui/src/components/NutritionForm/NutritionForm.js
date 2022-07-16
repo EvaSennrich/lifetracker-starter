@@ -1,53 +1,85 @@
 import React from "react";
-// import axios from "axios";
+import axios from "axios";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import apiClient from "../services/apiClient";
+// import apiClient from "../services/apiClient";
 import "./NutritionForm.css";
 
-const NutritionForm = () => {
-  // const [nutritions, setNutritions] = useState("");
-  // const [initialized, setInitialized] = useState("");
+const NutritionForm = ({ setAppState }) => {
   const navigate = useNavigate();
   const [isLoading, setIsLoading] = useState(false);
   const [errors, setErrors] = useState({});
-  const [nutritions, setNutritions] = useState([]);
-  const [nutritionForm, setNutritionForm] = useState({
+  // const [nutritions, setNutritions] = useState([]);
+  const [form, setForm] = useState({
     name: "",
     category: "",
-    quantity: 1,
-    calories: 1,
+    quantity: 0,
+    calories: 0,
     image_url: "",
   });
 
   const handleOnInputChangeNutrition = (event) => {
-    setNutritionForm((field) => ({ ...field, [event.target.name]: event.target.value }));
+    setForm((field) => ({ ...field, [event.target.name]: event.target.value }));
 
-    setErrors((e) => ({ ...e, nutritionForm: "Please fill out missing fields." }));
+    setErrors((e) => ({ ...e, form: "Please fill out missing fields." }));
   };
 
-  const handleOnSubmitNutrition = async () => {
-    if (nutritionForm.name === "" || nutritionForm.category === "" || nutritionForm.quantity === "" || nutritionForm.calories === "") {
+  const handleOnSubmit = async () => {
+    setIsLoading(true);
+    setErrors((e) => ({ ...e, form: null }));
+    if (form.name === "" || form.category === "" || form.quantity === "" || form.calories === "") {
       return alert("Please fill out the entire form.");
     }
 
-    setIsLoading(true);
+    try {
+      const res = await axios.post("http://localhost:3001/nutrition", {
+        name: form.name,
+        category: form.category,
+        quantity: form.quantity,
+        calories: form.calories,
+        image_url: form.image_url,
+      });
 
-    const { data } = await apiClient.addNutrition({
-      data: {
-        name: nutritionForm.name,
-        category: nutritionForm.category,
-        quantity: nutritionForm.quantity,
-        calories: nutritionForm.calories,
-        image_url: nutritionForm.image_url,
-      },
-    });
-    navigate("/nutrition");
-    // log data to see object
-    console.log("DATA ----->", data);
-    // setNutritions([...nutritions, data.nutritions]);
-    setIsLoading(false);
+      if (res?.data?.user) {
+        setAppState(res.data);
+        setIsLoading(false);
+        navigate("/nutrition");
+      } else {
+        setErrors((e) => ({ ...e, form: "Something went wrong with registration" }));
+        setIsLoading(false);
+      }
+    } catch (err) {
+      console.log("ERROR", err);
+      const message = err?.response?.data?.error?.message;
+      setErrors((e) => ({ ...e, form: message ? String(message) : String(err) }));
+      setIsLoading(false);
+    }
   };
+
+  //Deploying for heroku
+
+  // const handleOnSubmitNutrition = async () => {
+  //   if (nutritionForm.name === "" || nutritionForm.category === "" || nutritionForm.quantity === "" || nutritionForm.calories === "") {
+  //     return alert("Please fill out the entire form.");
+  //   }
+
+  //   setIsLoading(true);
+
+  //   const { data } = await apiClient.addNutrition({
+  //     data: {
+  //       name: nutritionForm.name,
+  //       category: nutritionForm.category,
+  //       quantity: nutritionForm.quantity,
+  //       calories: nutritionForm.calories,
+  //       image_url: nutritionForm.image_url,
+  //     },
+  //   });
+  //   navigate("/nutrition");
+  //   // log data to see object
+  //   console.log("DATA ----->", data);
+  //   // setNutritions([...nutritions, data.nutritions]);
+  //   setIsLoading(false);
+  // };
 
   return (
     <div className="ExercisePage">
@@ -60,12 +92,12 @@ const NutritionForm = () => {
           <div className="form">
             <div className="InputField">
               <label>Name</label>
-              <input type="text" name="name" placeholder="Nutrition name" value={nutritionForm.name} onChange={handleOnInputChangeNutrition} />
+              <input type="text" name="name" placeholder="Nutrition name" value={form.name} onChange={handleOnInputChangeNutrition} />
               {/* {errors.email && <span className="error">{errors.email}</span>} */}
             </div>
             <div className="InputField">
               <label>Category</label>
-              <input type="text" name="category" placeholder="Nutrition category" value={nutritionForm.category} onChange={handleOnInputChangeNutrition} />
+              <input type="text" name="category" placeholder="Nutrition category" value={form.category} onChange={handleOnInputChangeNutrition} />
             </div>
             <div className="split-input-field">
               <div className="InputField">
@@ -76,7 +108,7 @@ const NutritionForm = () => {
                   min="1"
                   max="100000000"
                   // defaultValue="1"
-                  value={nutritionForm.quantity}
+                  value={form.quantity}
                   onChange={handleOnInputChangeNutrition}
                 />
               </div>
@@ -88,22 +120,16 @@ const NutritionForm = () => {
                   min="0"
                   max="10"
                   // defaultValue="1"
-                  value={nutritionForm.calories}
+                  value={form.calories}
                   onChange={handleOnInputChangeNutrition}
                 />
               </div>
             </div>
             <div className="InputField">
               <label>Image URL</label>
-              <input
-                type="text"
-                name="image_url"
-                placeholder="http://www.food-image.com/1"
-                value={nutritionForm.image_url}
-                onChange={handleOnInputChangeNutrition}
-              />
+              <input type="text" name="image_url" placeholder="http://www.food-image.com/1" value={form.image_url} onChange={handleOnInputChangeNutrition} />
             </div>
-            <button className="Button primary large  aqua" disabled={isLoading} onClick={handleOnSubmitNutrition}>
+            <button className="Button primary large  aqua" disabled={isLoading} onClick={handleOnSubmit}>
               {isLoading ? "Loading..." : "Save"}
             </button>
           </div>

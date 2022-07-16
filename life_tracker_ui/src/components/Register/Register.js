@@ -1,15 +1,8 @@
 import { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import axios from "axios";
-// import MedicalResearch from "../MedicalResearch/MedicalResearch";
+import apiClient from "../services/apiClient";
 import "./Register.css";
-
-// const locationOptions = [
-//   { key: 1, label: "Local Clinic", value: "local clinic" },
-//   { key: 2, label: "Regional Hospital", value: "regional hospital" },
-//   { key: 3, label: "Care Center", value: "care center" },
-//   { key: 4, label: "Department of Health", value: "department of health" },
-// ];
 
 export default function Signup({ setAppState }) {
   const navigate = useNavigate();
@@ -19,11 +12,8 @@ export default function Signup({ setAppState }) {
     first_name: "",
     last_name: "",
     email: "",
-    date: "",
     password: "",
     passwordConfirm: "",
-    location: "Local Clinic",
-    agreeToTerms: false,
   });
 
   const handleOnInputChange = (event) => {
@@ -68,8 +58,8 @@ export default function Signup({ setAppState }) {
       const res = await axios.post("http://localhost:3001/auth/register", {
         date: form.date,
         location: form.location,
-        first_name: form.first_name,
-        last_name: form.last_name,
+        first_name: form.firstName,
+        last_name: form.lastName,
         email: form.email,
         password: form.password,
       });
@@ -90,6 +80,39 @@ export default function Signup({ setAppState }) {
     }
   };
 
+  // for deploying with Heroku
+  // const handleOnSubmit = async () => {
+  //   setIsLoading(true);
+  //   setErrors((e) => ({ ...e, form: null }));
+
+  //   if (form.passwordConfirm !== form.password) {
+  //     setErrors((e) => ({ ...e, passwordConfirm: "Passwords do not match." }));
+  //     setIsLoading(false);
+  //     return;
+  //   } else {
+  //     setErrors((e) => ({ ...e, passwordConfirm: null }));
+  //   }
+
+  //   const { data } = await apiClient.register({
+  //     first_name: form.first_name,
+  //     last_name: form.last_name,
+  //     email: form.email,
+  //     password: form.password,
+  //     passwordConfirm: form.passwordConfirm,
+  //   });
+
+  //   if (data?.user) {
+  //     setAppState(data.user.first_name);
+  //     setIsLoading(false);
+  //     navigate("/portal");
+  //     apiClient.setToken(data.token);
+  //   } else {
+  //     console.log("BIG FAT ERROR", data.user.first_name);
+  //     setErrors((e) => ({ ...e, form: "Something went wrong with registration" }));
+  //     setIsLoading(false);
+  //   }
+  // };
+
   return (
     <div className="Register">
       <div className="media">
@@ -106,26 +129,6 @@ export default function Signup({ setAppState }) {
         <br />
 
         <div className="form">
-          {/* <div className="split-inputs">
-            <div className="input-field">
-              <label htmlFor="name">Select a date</label>
-              <input type="date" name="date" value={form.date} onChange={handleOnInputChange} />
-              {errors.date && <span className="error">{errors.date}</span>}
-            </div>
-
-            <div className="input-field">
-              <label htmlFor="name">Select a location</label>
-              <select name="location" onChange={(event) => setForm((f) => ({ ...f, location: event.target.value }))}>
-                {locationOptions.map((location) => (
-                  <option key={location.key} value={location.label}>
-                    {location.label}
-                  </option>
-                ))}
-              </select>
-              {errors.location && <span className="error">{errors.location}</span>}
-            </div>
-          </div> */}
-
           <br />
 
           <div className="split-inputs">
@@ -176,175 +179,3 @@ export default function Signup({ setAppState }) {
     </div>
   );
 }
-
-// import React from "react"
-// import apiClient from "../../services/apiClient"
-// import { useNavigate } from "react-router-dom"
-// import { Box, Button, FieldStack, FieldWrapper, InputField, SelectMenu, Heading, Stack, Text } from "bumbag"
-
-// import "./Register.css"
-
-// function sleep(ms) {
-//   return new Promise((resolve) => setTimeout(resolve, ms))
-// }
-
-// const Register = ({ setAppState }) => {
-//   const navigate = useNavigate()
-//   const [isLoading, setIsLoading] = React.useState(false)
-//   const [form, setForm] = React.useState({
-//     first_name: "",
-//     last_name: "",
-//     email: "",
-//     date: "",
-//     password: "",
-//     passwordConfirm: "",
-//     location: 1,
-//     agreeToTerms: false,
-//   })
-//   const [errors, setErrors] = React.useState({})
-
-//   const handleOnSubmit = async (e) => {
-//     e.preventDefault()
-//     setIsLoading(true)
-
-//     await sleep(2000)
-
-//     try {
-//       const { data, error, message } = await apiClient.register({
-//         first_name: form.first_name,
-//         last_name: form.last_name,
-//         email: form.email,
-//         password: form.password,
-//         date: form.date,
-//         location: form.location?.label,
-//       })
-//       if (error) {
-//         setErrors((e) => ({ ...e, form: message }))
-//         setIsLoading(false)
-//         return
-//       }
-
-//       if (data) {
-//         setAppState(data)
-//         navigate("/portal")
-//       }
-//     } catch (err) {
-//       setErrors((e) => ({ ...e, form: err }))
-//       setIsLoading(false)
-//     }
-//   }
-
-//   const handleOnChange = (e) => {
-// if (e.target.name === "password") {
-//   if (form.passwordConfirm && form.passwordConfirm !== e.target.value) {
-//     setErrors((e) => ({ ...e, passwordConfirm: "Password's do not match" }))
-//   } else {
-//     setErrors((e) => ({ ...e, passwordConfirm: null }))
-//   }
-// }
-// if (e.target.name === "passwordConfirm") {
-//   if (form.password && form.password !== e.target.value) {
-//     setErrors((e) => ({ ...e, passwordConfirm: "Password's do not match" }))
-//   } else {
-//     setErrors((e) => ({ ...e, passwordConfirm: null }))
-//   }
-// }
-// if (e.target.name === "email") {
-//   if (e.target.value.indexOf("@") === -1) {
-//     setErrors((e) => ({ ...e, email: "Please enter a valid email." }))
-//   } else {
-//     setErrors((e) => ({ ...e, email: null }))
-//   }
-// }
-//     setForm((f) => ({ ...f, [e.target.name]: e.target.value }))
-//   }
-
-//   return (
-//     <>
-//       <form onSubmit={handleOnSubmit} className="Register">
-//         <Heading use="h1" className="title">
-//           Register For a Vaccine
-//         </Heading>
-
-//         <br />
-
-//         <Box>
-//           <Heading use="h5">
-//             <>{Boolean(errors.form) ? <Text color="danger">{String(errors.form)}</Text> : null}</>
-//           </Heading>
-//         </Box>
-
-//         <br />
-
-// <Stack spacing="major-1">
-//   <FieldWrapper label="Choose a date" isRequired>
-//     <InputField type="date" name="date" value={form.date} onChange={handleOnChange} />
-//   </FieldWrapper>
-// </Stack>
-
-// <br />
-
-// <SelectMenu
-//   label="Select a location..."
-//   isRequired
-//   onChange={(location) => setForm((f) => ({ ...f, location }))}
-//   options={[
-//     { key: 1, label: "Local Clinic", value: "local clinic" },
-//     { key: 2, label: "Regional Hospital", value: "regional hospital" },
-//     { key: 3, label: "Care Center", value: "care center" },
-//     { key: 4, label: "Department of Health", value: "department of health" },
-//   ]}
-//   value={form.location}
-// />
-
-//         <br />
-//         <br />
-
-//         <FieldStack>
-//           <FieldStack orientation="horizontal">
-//             <FieldWrapper label="First Name" isRequired>
-//               <InputField name="first_name" value={form.first_name} onChange={handleOnChange} />
-//             </FieldWrapper>
-//             <FieldWrapper label="Last Name" isRequired>
-//               <InputField name="last_name" value={form.last_name} onChange={handleOnChange} />
-//             </FieldWrapper>
-//           </FieldStack>
-//           <FieldWrapper
-//             label="Email"
-//             isRequired
-//             description={errors.email ? <Text color="danger">{errors.email}</Text> : undefined}
-//           >
-//             <InputField name="email" type="email" value={form.email} onChange={handleOnChange} />
-//           </FieldWrapper>
-
-//           <InputField
-//             name="password"
-//             label="Password"
-//             type="password"
-//             isRequired
-//             value={form.password}
-//             onChange={handleOnChange}
-//           />
-//           <FieldWrapper
-//             label="Confirm Password"
-//             isRequired
-//             description={errors.passwordConfirm ? <Text color="danger">{errors.passwordConfirm}</Text> : undefined}
-//           >
-//             <InputField
-//               name="passwordConfirm"
-//               type="password"
-//               state={errors.passwordConfirm ? "danger" : undefined}
-//               value={form.passwordConfirm}
-//               onChange={handleOnChange}
-//             />
-//           </FieldWrapper>
-//           <Button isLoading={isLoading} palette="primary" type="submit">
-//             Register
-//           </Button>
-//         </FieldStack>
-//       </form>
-//     </>
-//   )
-// }
-
-// export default Register

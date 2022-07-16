@@ -31,12 +31,9 @@ export default function Login({ setAppState, setUserLoggedIn }) {
     setErrors((e) => ({ ...e, form: null }));
 
     try {
-      const { data } = await apiClient.login({
-        email: form.email,
-        password: form.password,
-      });
-      if (data) {
-        setAppState(data);
+      const res = await axios.post(`http://localhost:3001/auth/login`, form);
+      if (res?.data) {
+        setAppState(res.data);
         setIsLoading(false);
         navigate("/portal");
         setUserLoggedIn(true);
@@ -51,6 +48,35 @@ export default function Login({ setAppState, setUserLoggedIn }) {
       setIsLoading(false);
     }
   };
+
+  //for deploying with Heroku
+
+  // const handleOnSubmit = async (e) => {
+  //   e.preventDefault();
+  //   setIsLoading(true);
+  //   setErrors((e) => ({ ...e, form: null }));
+
+  //   try {
+  //     const { data } = await apiClient.login({
+  //       email: form.email,
+  //       password: form.password,
+  //     });
+  //     if (data.user) {
+  //       setAppState(data.user);
+  //       setIsLoading(false);
+  //       navigate("/portal");
+  //       setUserLoggedIn(true);
+  //     } else {
+  //       setErrors((e) => ({ ...e, form: "Invalid username/password combination" }));
+  //       setIsLoading(false);
+  //     }
+  //   } catch (err) {
+  //     console.log(err);
+  //     const message = err?.response?.data?.error?.message;
+  //     setErrors((e) => ({ ...e, form: message ? String(message) : String(err) }));
+  //     setIsLoading(false);
+  //   }
+  // };
 
   return (
     <div className="Login">

@@ -49,7 +49,7 @@ export default function App() {
           <Route path="/login" element={<Login setAppState={setAppState} setUserLoggedIn={setUserLoggedIn} />} />
           <Route path="/portal" element={<Portal setAppState={setAppState} appState={appState} user={appState?.user} />} />
           <Route path="/exercise" element={<Exercise />} />
-          <Route path="/nutrition" element={<Nutrition />} />
+          <Route path="/nutrition" element={<Nutrition setAppState={setAppState} />} />
           <Route path="/sleep" element={<Sleep />} />
           <Route path="/exercise-form" element={<ExerciseForm setAppState={setAppState} />} />
           <Route path="/nutrition-form" element={<NutritionForm />} />

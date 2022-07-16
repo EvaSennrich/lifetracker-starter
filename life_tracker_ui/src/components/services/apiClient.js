@@ -41,7 +41,7 @@ class ApiClient {
     return await this.request({ endpoint: "auth/login", method: "POST", data: credentials });
   }
 
-  async signup(credentials) {
+  async register(credentials) {
     return await this.request({ endpoint: "auth/register", method: "POST", data: credentials });
   }
 
@@ -73,4 +73,7 @@ class ApiClient {
   }
 }
 
-export default new ApiClient(process.env.REACT_APP_REMOTE_HOST_URL || "https://ftl-eva1.herokuapp.com/");
+// export default new ApiClient("https://ftl-eva1.herokuapp.com/");
+export default new ApiClient(process.env.REACT_APP_REMOTE_HOST_URL || "http://localhost:3001");
+
+// process.env.REACT_APP_REMOTE_HOST_URL ||
