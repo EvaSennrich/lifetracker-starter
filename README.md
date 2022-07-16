@@ -39,10 +39,19 @@ Implement any of the following features to improve the application:
 - [ ] Create a page that shows all other users that use the life tracker application and allow users to follow each other.
 
 ### Walkthrough Video
-
-`TODO://` Add the embedded URL code to your animated app walkthrough below, `ADD_EMBEDDED_CODE_HERE`. Make sure the video or gif actually renders and animates when viewing this README. (🚫 Remove this paragraph after adding walkthrough video)
-
 `ADD_EMBEDDED_CODE_HERE`
+
+https://user-images.githubusercontent.com/85651695/179327630-21765baf-db40-432b-9f09-373d4f28c53c.mp4
+
+
+
+
+https://user-images.githubusercontent.com/85651695/179327635-94039ad1-8a4b-42b5-b8a1-88c531fb6c3a.mp4
+
+
+
+
+
 
 ### Reflection
 
